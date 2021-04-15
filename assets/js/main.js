@@ -1,322 +1,73 @@
-/*Javascript ES6, today is the day....*/
-
-// ECMAScript o ES, es un conjunto de especificaciones que salen año tras año.
-// ECMAScript6 o ES2015, fue el conjunto de features más grande hasta el momento.
-
-/*
-1) Const y Let (Block Scope)
-2) Arrow Functions
-3) Modules (Imports and Exports)
-4) Template Literals
-5) Classes (Constructor, Super, Setters and Getters)
-6) Default Parameters
-7) The Spread Operator
-8) Destructuring
-9) Rest Operator
-10) map(), filter(), reduce() 
-
-//Esto para la proxima clase
-11) Promesas, Async/Await
-*/
-
-//1) Const y Let (Block Scope)
-console.log('sasa');
-var x = 50
-if (true) {
-    var x = 10
-    console.log('segunda X', x)
-}
-console.log('primera x', x)
-var x = 509 
-
-let y = 50
-if (true) {
-    let y = 10
-    console.log('segunda Y', y)
-}
-console.log('primera Y', y)
-
-
-const pi = 3.14
-function area(radius){
-    const pi = 1;
-    return (pi * radius * radius);
-}
-console.log('el valor de pi es: ' + pi, 'y el valor del area es ' + area(5))
-
-
-// 2) Arrow Functions
-
-function suma (a, b){
-    return a + b
-}
-
-console.log("la suma es: ", suma(1,1) )
-
-//Declaración de la función
-const multiplicacion = (a,b) => {
-    return a * b
-}
-
-//Invocación de la función
-console.log("la multi es: ", multiplicacion(6,6) )
-
-const multiplicacionSimple = (a,b) => a * b
-
-
-console.log("la multi Simle es: ", multiplicacionSimple(6,6) )
-
-
-const fraseSimple = (msg) => 'Hola como estas ' + msg
-
-const fraseSimpleDos = (msg) => {
-    return 'Hola como estas ' + msg
-}
-
-console.log('Mensaje:', fraseSimple('te quiero mucho'))
-console.log('Mensaje 2:', fraseSimple('te re odio'))
-console.log('Mensaje 3:', fraseSimple('ñe ñe'))
-
-
-//3) Modules (Imports and Exports)
-
-import { peliculasCopadas, cantidadPeliculas } from '../js/libreriaAmiga.js'
-console.log('Pelis del modulo', peliculasCopadas);
-console.log('Cantidad de peliculas', cantidadPeliculas(peliculasCopadas));
-
-//import { colors } from '../js/colors.js'
-console.log("Colores", colors)
-
-
-//4) Template Literals
-
-let saludo = 'hola'
-let nombresito = 'Mike'
-let edad = 20
-
-let msg = saludo + nombresito + 'tu edad es ' + edad
-let msgLiteral = `${saludo} ${nombresito} tu edad es ${edad}`
-console.log('mi saludo:', msgLiteral)
-
-let msgJs = `La suma de 10 + 5 es: ${10 + 5}`
-console.log('mensaje con operación', msgJs)
-
-let fraseJs = `Mi mensaje es:${ fraseSimpleDos('pepep') }`
-console.log("mensaje con funcion", fraseJs)
-
-const miElementoP = `<p class="highlighted">${edad}</p><div><h2>${nombresito}</h2></div>`
-
-const miContent = document.querySelector('#content')
-
-const miMarkup = `
-    <div class="card">
-        <img src="" alt="">
-        <h2>${nombresito}</h2>
-        <p class="edad">${edad}</p>
-    </div>
-`
-
-miContent.innerHTML = miElementoP
-miContent.innerHTML = miMarkup
-
-
-//5) Classes (Constructor, Super, Setters and Getters)
-
-class Persona {
-    constructor (nombre, apellido, dni){
-        this.nombre = nombre
-        this.apellido = apellido
-        this.dni = dni
-    }
-    //Getters
-    getDni(){
-        return this.dni
-    }
-    getNombre(){
-        return this.nombre
-    }
-    getApellido(){
-        return this.apellido
-    }
-
-    obtenerNombreCompleto(){
-        return `${this.nombre} ${this.apellido}`
-    }
-
-    //Setter
-    setDni(miDni){
-        this.dni = miDni
-    }
-
-}
-
-const alejandro = new Persona('Alejandro', 'Nieco', '43000993')
-const mike = new Persona('Mike', 'Morron', '2345678')
-
-console.log("El mejor alumno es: ", alejandro.obtenerNombreCompleto())
-console.log("El peor alumno es: ", mike)
-
-alejandro.setDni('111111111')
-
-mike.getApellido()
-
-
-console.log("El mejor alumno es: ", alejandro)
-
-
-//6) Default Parameters
-
-const dividirNumeros = (divisor = 10, dividendo = 2) => dividendo > 0 ? divisor / dividendo : false
-
-
-//If ternario tiene 3 partes, antes del ? que es la condicion (verdadero o falso) 
-//Entre el ? y los : es lo que devuelve en caso de true
-//Lo que está detras de los : es lo que devuelve en caso de false
-
-console.log("mi división es: ", dividirNumeros(20))
-
-
-// 7) The Spread Operator
-
-const numerosNegativos = [-100, -50, -10, -5];
-const numerosPositivos = [20, 30, 60, 100];
-
-const numerosReales = [...numerosNegativos, ...numerosPositivos];
-
-console.log("numeros reales:", numerosReales)
-
-const empresa = {
-    nombreEmpresa : 'MaimoCorp',
-    logoEmpresa: "logo.svg"
-}
-
-const paisEmpresa = {
-    nombrePais: 'Argentina',
-    monedaPais: 'Peso Argentino'
-}
-
-const empresaTotal = {
-    ...empresa,
-    ...paisEmpresa
-}
-
-console.log("Mi empresa tiene:", empresaTotal);
-
-
-
-//8) Destructuring
-
-const numerosDes = [1,2,3,4,5,6]
-
-const palabras = ["palabra1", "palabra2", "palabra3"]
-
-const [,,,numeroCuatro] = numerosDes
-
-const [palabraUno] = palabras
-
-console.log(palabraUno)
-
-
-const clima = {
-    unidad: 'Celcius',
-    temperatura: 15,
-    provincia: 'Buenos Aires',
-    pais: 'Argentina'
-}
-
-const { unidad, temperatura, provincia, pais } = clima
-
-const temperaturas = [
-    {
-        unidad: 'Celcius',
-        temperatura: 15,
-        provincia: 'Buenos Aires',
-        pais: 'Argentina'
-    },
-    {
-        unidad: 'Celcius',
-        temperatura: 40,
-        provincia: 'Formosa',
-        pais: 'Argentina'
-    }
+//Ejercitación ES6
+ 
+// Crear un archivo main.js con los siguientes puntos y completar debajo de cada enunciado.
+// Los valores de cada punto se deben mostrar con un console.log() especificando el dato que se muestra con un enunciado ej:
+// console.log('1 - El promedio es:', miPromedio);
+// Completar esta tarea con el link a github
+ 
+const alumnosMaimo = [
+{ nombre: 'Sofia Bonavena', edad: 23 },
+{ nombre: 'Micaela Fernandez', edad: 22 },
+{ nombre: 'Giuliano Giovanola', edad: 20 },
+{ nombre: 'Lautaro Hudson', edad: 19 },
+{ nombre: 'Alejandro Nieco', edad: 22 },
+{ nombre: 'Micaela Orfali', edad: 24 },
+{ nombre: 'Pedro Balza', edad: 26 },
+{ nombre: 'Leandro Amaro', edad: 35 },
+{ nombre: 'Alva Ramírez', edad: 27 },
+{ nombre: 'Diego Salischiker', edad: 29 },
 ]
+ 
+// DISCLAIMER: La edad es ficticia y solo destinada para realizar los siguientes ejercicios
+ 
+// 1. Obtener un array de strings con solo nombres de cada alumno usando .map()
+const arrNombres = alumnosMaimo.map(({ nombre })=> nombre)
+console.log('1-', arrNombres);
+ 
+// 2. Obtener un array con aquellos alumnos mayores a 25 años usando .filter()
+const alumnosMayoresDe25 = alumnosMaimo.filter(({ edad })=> edad > 25)
+console.log('2-', alumnosMayoresDe25);
 
-temperaturas.forEach((localidad)=>{
-    const { unidad, temperatura, provincia } = localidad
-    console.log(`La temperatura en ${provincia} es de ${temperatura} grados ${unidad}`)
-})
+// 3. Obtener un entero con la edad total de todos los alumnos usando .reduce() (Investigar: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+//const { edad } = alumnosMaimo
+const totalEdad = alumnosMaimo.map(({ edad })=> edad).reduce( (a,b) => a + b )
+console.log('3-', totalEdad);
 
+// 4. Obtener en una constante la edad de "Micaela Orfali" usando .find() ( Investigar: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find ) y destructuring del resultado. Investigar método includes
+const edadMica = alumnosMaimo.find(({ nombre, edad }) => nombre === "Micaela Orfali"? edad : false);
+const { edad } = edadMica;
+console.log('4-', edad);
 
-// const { unidad, temperatura, provincia } = clima
-// console.log(`La temperatura en ${provincia} es de ${temperatura} grados ${unidad}`)
+// 5. Obtener en una constante primer alumno del array de alumnos usando destructuring y posteriormente en otra constante su nombre también
+const [primerAlumno] = alumnosMaimo
+console.log('5-', primerAlumno);
 
+const {nombre} = primerAlumno
+console.log('5-', nombre);
 
-//9) Rest Operator
+// 6. Obtener un array con aquellos alumnos que empiezan con la letra "L", usando .filter()
+const alumnosL = alumnosMaimo.filter(({ nombre })=> nombre.startsWith('L'))
+console.log('6-', alumnosL);    
 
-const universidad = {
-    name: 'Umai',
-    website: 'https://multimedia.maimonides.edu',
-    sedes:['Caballito', 'Centro', 'Palermo']
-}
+// 7. Obtener un array agregando una propiedad/key/atributo más a cada elemento usando .map()
+const arrProperty = alumnosMaimo.map(obj => ({ ...obj, Active: 'true' }))
+console.log('7-', arrProperty);
 
-const {website, ...masInfo} = universidad
+// 8. Obtener a partir de la constante en 3, el promedio de edad del curso dividiendo la misma por el total de alumnos
+const promedioEdad = totalEdad/alumnosMaimo.length
+console.log('8-', promedioEdad);
 
-console.log("Website", website)
-console.log("El resto de la info", masInfo)
+// HACER HASTA ACA!
+//Async/Await
+ 
+// 9. Buscar una API que más te guste en https://github.com/toddmotto/public-apis pero que debajo de la columna Auth especifique "No"
+ 
+// 10. Implementar una función getDataWithPromises que utilice la API de Promises usando .then() (investigar)
+ 
+// 11. Implementar una función getDataWithAsync que utilice async / await junto con la API fetch para buscar los datos de la API elegida
+ 
+// 12. Hiciste manejo de errores? En caso que no lo hayas hecho utiliza .catch() en la función getDataWithPromises o try / catch en la función getDataWithAsync
+ 
+// 13. Si te animás un poco más mostrá los datos que trajiste en el elemento div con id "content". En caso que sea un array podés iterar usando .forEach() o .map(). Para ello debes investigar y usar alguna de las siguientes APIs del DOM: querySelector(), innerHTML, textContent
 
-const { temperatura: temp , unidad: un, ...localidad } = clima
-console.log("resto de los datos de localidad",localidad)
-
-
-
-// 10) map(), filter()
-
-//Map
-const arrNumeros = [6,7,2,3,4,5];
-const arrNumerosMulti = arrNumeros.map((posActual)=>{
-    return posActual * 3
-})
-// const arrNumerosMulti = arrNumeros.map(posActual => posActual * 3)
-console.log(arrNumerosMulti)
-
-const nombresSenores = ["Mike", "Robert", "Paul", "Georgio"]
-const nombresSenoresPolite = nombresSenores.map(nombre => {
-    return `Sr. ${nombre}`
-})
-console.log("Los mejores: ", nombresSenoresPolite)
-
-
-//Filter
-
-const nrosMayoresA4 = arrNumeros.filter((nro)=>{
-    return nro > 4 && nro < 7
-})
-console.log(nrosMayoresA4)
-
-
-const alumnos = [
-    {nombre:'Mica', edad:'20'},
-    {nombre:'Ale', edad:'23'},
-    {nombre:'Giuliano', edad:'24'}
-]
-
-const alumnosMayoresDe20 = alumnos.filter((alumno)=>{
-    const { edad } = alumno //destructuring
-    return edad > 20
-})
-
-//Otra opción mas simplificada
-//const alumnosMayoresDe20 = alumnos.filter(({ edad, nombre })=> edad > 20 && nombre !="Ale")
-
-console.log("Mis alumnos grandes", alumnosMayoresDe20)
-
-//Sort (offtopic)
-const nrosMayoresA4Sorted = nrosMayoresA4.sort()
-console.log(nrosMayoresA4Sorted)
-
-
-//Reduce
-const misValores = [0,1,2,3,4,5,100]
-const total = misValores.reduce( (a,b) => a + b )
-console.log(total)
 
