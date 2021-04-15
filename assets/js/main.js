@@ -18,7 +18,7 @@
 //Esto para la proxima clase
 11) Promesas, Async/Await
 */
-
+console.log('hola');
 //1) Const y Let (Block Scope)
 
 var x = 50
