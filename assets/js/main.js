@@ -20,7 +20,7 @@
 */
 
 //1) Const y Let (Block Scope)
-
+console.log('sasa');
 var x = 50
 if (true) {
     var x = 10
@@ -84,7 +84,7 @@ import { peliculasCopadas, cantidadPeliculas } from '../js/libreriaAmiga.js'
 console.log('Pelis del modulo', peliculasCopadas);
 console.log('Cantidad de peliculas', cantidadPeliculas(peliculasCopadas));
 
-import { colors } from '../js/colors.js'
+//import { colors } from '../js/colors.js'
 console.log("Colores", colors)
 
 
